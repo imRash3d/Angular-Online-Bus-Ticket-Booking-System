@@ -1,0 +1,53 @@
+<div class="container" *ngIf="createTicket">
+  <div class="row justify-content-center">
+    <div class="col-md-10 ticket ">
+        <h6 class="text-center pt-3 pb-3 "> Online Reservation      </h6>
+        <table class="table ">
+   <thead>
+    <td class="text-capitalize">{{createTicket.journey.journey_route.leaving_form}} <span> <i class="fas fa- arrow-right"></i></span> {{createTicket.journey.journey_route.going_to}}</td>
+    <td>ThursDay 12 , 2018</td>
+    <td>RedbuS.com</td>
+   </thead>
+        </table>
+        <table class="table ps_details">
+          <tr>
+            <th>Passenger Details</th>
+            <th>Ticket Id</th>
+            <th>Seat No</th>
+            <th>Total Fare</th>
+            
+          </tr>
+          <tr>
+            <td><b>{{createTicket.user.user_name}}</b> <br>
+              <span>{{createTicket.user.mobile}}</span> <br>
+              <span>{{createTicket.user.user_email}}</span>
+            </td>
+
+            <td>{{createTicket.ticketId}}</td>
+            <td *ngIf="createTicket.journey.seats">
+             <span  *ngFor="let s of createTicket.journey.seats">{{s}}</span> 
+            </td>
+            <td>{{createTicket.journey.fare}} </td>
+          </tr>
+        </table>
+        <table class="table ps_details ">
+          <tr>
+            <th>Bus Name</th>
+            <th>Reporting Time </th>
+            <th>Departure Time</th>
+            
+          </tr>
+          <tr>
+            <td>{{createTicket.journey.bus.name}} <br>
+            <span> <em>Coach Type: </em>{{createTicket.journey.bus.coach_type}} </span>
+            </td>
+            <td>Before 30 mints</td>
+            <td>{{createTicket.journey.bus.time}}</td>
+          </tr>
+        </table>
+    </div>
+    <div class="row">
+      <p style="color:red">** Please Bring this copy to ticket counter for collect your ticket </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container mt-4 ">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-8 block" style="
+  height: 340px;
+  margin-bottom: 28px;
+">
+          <form (ngSubmit)="userForm(userF)" #userF="ngForm">
+            <div class="form-group">
+              <label>User Name</label>
+              <input type="text" required name="user_name" ngModel class="form-control form-control-sm">
+            </div>
+            <div class="form-group">
+              <label>User Mobile No</label>
+              <input type="text" required name="user_mobile" ngModel class="form-control form-control-sm">
+            </div>
+            <div class="form-group">
+              <label>Email </label>
+              <input type="email" required name="user_email" ngModel class="form-control form-control-sm">
+            </div>
+            <button [disabled]="!userF.valid" class="btn btn-sm btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="journey" class="card card-body block j_details">
+            <h6>Journy Details</h6>
+            <hr>
+            <h5 class="text-capitalize"style="color:coral"> {{journey.journey_route.leaving_form}} to {{journey.journey_route.going_to}} </h5>
+            <p> Date & Time : {{journey.journey_route.date}} :{{journey.bus.time}}</p>
+            <p>{{journey.bus.name}} <br>
+                <span>Coach Type : {{journey.bus.coach_type}}  </span>
+            </p>
+            <p >Seats No (
+              <li style="display:inline;color:coral" *ngFor="let s of journey.seats">{{s}} , </li>
+              
+              )</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container mt-4 " *ngIf="route">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="row text-center">
+            <h6 class=" text-capitalize col-md-12 mb-3 text-center">{{route.leaving_form}} - {{route.going_to}} on {{route.date | date:'longDate'}}</h6>
+          </div>
+      <div class="row mb-3 card card-body">
+
+       <div class=" row">
+         <div class="col-md-4 text-right">
+           <p><b>Filter By</b></p>
+         </div>
+          <div class="form-group col-md-4">
+            <select name="" class="form-control form-control-sm" id="">
+              <option value="">By Bus</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+              <select name="" class="form-control form-control-sm">
+                <option value="">By Type</option>
+              </select>
+            </div>
+       </div>
+      </div>
+      <div class="row search-result mb-5 pb-5">
+
+        <table class="table">
+
+          <thead>
+            <tr>
+                <th>Bus Name</th>
+                <th>Dept. Time</th>
+                <th>Coach Type</th>
+                <th>Seats Available</th>
+                <th>Fare</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let b of buses">
+              <td> <h6>{{b.name}}</h6></td>
+             
+              <td>{{b.time}}</td>
+              <td>{{b.coach_type}}</td>
+              <td>{{b.seat}}</td>
+              <td>{{b.fare}}</td>
+              <ng-template #template>
+           
+                  <div class="modal-body">
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    <select-seat [bus]="b" (closeModal)="closeModal()"></select-seat>
+                  </div>
+              </ng-template>
+              <td><button  (click)="openModal(template)" class="btn btn-danger btn-sm">View Seats</button></td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
